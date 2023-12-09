@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <title>Your Beautiful Website</title>
+  <style>
+    body {
+      background-color: #f8f9fa;
+      background: url('./pic/bcbl.png') center/cover no-repeat fixed;
+    }
+    .container {
+        padding-top: 80px;
+        
+      
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      flex-direction: column;
+      background: url('./pic/bcbl.png') center/cover no-repeat fixed;
+      
+    }
+    .advertisement {
+    background: url('./pic/bcbl.png') center/cover no-repeat fixed;
+      background-color: #343a40;
+      color: #ffffff;
+      text-align: center;
+      padding: 10px;
+      width: 100%;
+    }
+
+    .advertisement:hover{
+      font-size: large;
+      font-weight: 500;
+      color: aqua;
+    }
+
+    .box-container {
+      display: flex;
+      justify-content: center;
+     
+    }
+    .box {
+        
+  
+      width: 200px;
+      height: 200px;
+      background-color: #007bff;
+      color: #ffffff;
+      margin: 30px;
+      padding: 20px;
+      padding-top: 70px;
+      text-align: center;
+      border-radius: 10px;
+      transition: transform 0.3s ease-in-out;
+    }
+    .box:hover {
+      transform: scale(1.1);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Advertisement Section -->
+  <div class="advertisement">
+    <p>Weclome to the Travel Website | Login into your Account | Register for a new Account</p>
+  </div>
+
+  <!-- Content Section -->
+  <div class="container">
+    <div class="box-container">
+      <a href="intromap.html" class="box">
+        <h4>Spot Intro</h4>
+      </a>
+      <a href="login.html" class="box">
+        <h4>My Account</h4>
+      </a>
+      <a href="imgintro.html" class="box">
+        <h4>Picture Show</h4>
+      </a>
+
+      <a href="register.html" class="box">
+        <h4>Registration</h4>
+      </a>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

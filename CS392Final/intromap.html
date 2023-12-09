@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Famous Tourist Attractions in the United States</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <style>
+        body {
+            font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            background: url('./pic/bcall.png') center/cover no-repeat fixed;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin: 20px 0;
+        }
+        .attraction {
+        
+            margin-bottom: 20px;
+            background: url('./pic/bcattr.png') center/cover no-repeat fixed;
+            border: 1px solid #dee2e6;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        .attraction:hover{
+            font-family:Verdana, Geneva, Tahoma, sans-serif;
+            font-weight: 500;
+            color:blueviolet;
+            background-color: rgba(160, 223, 148, 0.7);
+        }
+
+        #map {
+            height: 500px;
+            margin-top: 40px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        #homeIcon {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background-color:burlywood;
+            border: 1px solid #ced4da;
+            border-radius: 50%;
+            padding: 10px;
+            cursor: pointer;
+            margin-top: 15px;
+            margin-right: 15px;
+
+        }
+
+        #homeIcon:hover{
+            background-color: chartreuse;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Tourist Spots in the United States</h1>
+
+        <div class="attraction">
+            <h2>New York</h2>
+            <p>New York, constituent state of the United States of America, one of the 13 original colonies and states. New York is bounded to the west and north by Lake Erie, the Canadian province of Ontario, Lake Ontario, and the Canadian province of Quebec; to the east by the New England states of Vermont, Massachusetts, and Connecticut; to the southeast by the Atlantic Ocean and New Jersey; and to the south by Pennsylvania. The capital is Albany.
+
+                Until the 1960s New York was the country’s leading state in nearly all population, cultural, and economic indexes. Its displacement by California beginning in the middle of that decade was caused by the enormous growth rate that has persisted on the West Coast rather than by a large decline in New York itself. Texas overtook New York as the second most populous state in 2000. Still, New York remains one of the most populous states in the country, and its gross economic product exceeds those of all but a handful of countries throughout the world...</p>
+        </div>
+
+        <div class="attraction">
+            <h2>Los Angeles</h2>
+            <p>Los Angeles , city, seat of Los Angeles county, southern California, U.S. It is the second most populous city and metropolitan area (after New York City) in the United States. The city sprawls across a broad coastal plain situated between mountains and the Pacific Ocean; the much larger Los Angeles county, which encompasses the city, contains some 90 other incorporated cities, including Beverly Hills, Pasadena, and Long Beach. The county also encompasses two of the Channel Islands, Santa Catalina and San Clemente; Mount San Antonio, familiarly known as Mount Baldy or Old Baldy...</p>
+        </div>
+
+        <div class="attraction">
+            <h2>San Francisco</h2>
+            <p>San Francisco, city and port, coextensive with San Francisco county, northern California, U.S., located on a peninsula between the Pacific Ocean and San Francisco Bay. It is a cultural and financial centre of the western United States and one of the country’s most cosmopolitan cities. Area 46 square miles (120 square km). Pop. (2010) 805,235; San Francisco–San Mateo–Redwood City Metro Division, 1,776,095; San Francisco–Oakland–Fremont Metro Area, 4,335,391; (2020) 873,965; San Francisco–San Mateo–Redwood City Metro Division, 1,638,407; San Francisco–Oakland–Berkeley Metro Area, 4,749,008. San Francisco holds a secure place in the United States’ romantic dream of itself—a cool, elegant, handsome...</p>
+        </div>
+
+        <div class="attraction">
+            <h2>Chichago</h2>
+            <p>Chicago, city, seat of Cook county, northeastern Illinois, U.S. With a population hovering near three million, Chicago is the state’s largest and the country’s third most populous city. In addition, the greater Chicagoland area—which encompasses northeastern Illinois and extends into southeastern Wisconsin and northwestern Indiana—is the country’s third largest metropolitan area and the dominant metropolis of the Midwest...</p>
+        </div>
+
+        <div class="attraction">
+            <h2>Boston</h2>
+            <p>The area, the people, and the institutions within its political boundaries can only begin to define the essence of Boston. Its nickname “Beantown” has its origin in colonial times, when Boston, as a stop on a major trade route with the West Indies, had a steady supply of molasses from the Caribbean, thus leading to the creation of a popular dish that became known as Boston baked beans (beans baked in molasses). As a city and as a name, Boston is a symbol of much that has gone into the development of the American consciousness, and its presence reaches far beyond its immediate environs. As the spiritual capital of the New England states, as the progenitor of the American Revolution and the nation, and as the earliest centre of American culture, Boston has influenced the country for some three centuries. Though Boston, like New England in general, has played a lessening role in national life since the early 20th century, it has remained the focal point of what may be the most diversified and dynamic combination of educational, cultural, medical, and scientific activities in the United States...</p>
+        </div>
+
+        <!-- Add more attractions as needed -->
+
+        <div id="map"></div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+        function initMap() {
+            const attractions = [
+                { name: 'the Statue of Liberty', lat: 40.7128, lng: -74.0060 },
+                { name: 'Santa Monica', lat: 34.03, lng: -118.15 },
+                { name: 'Silicon Valley', lat: 37.7749, lng: -122.4194 },
+                { name: 'Art Institute of Chicago', lat: 41.8781, lng: -87.6298 },
+                { name: 'Boston Common', lat: 42.361145, lng: -71.057083 }
+
+                // Add more attractions with their coordinates
+            ];
+
+            const map = L.map('map').setView([32.8283, -98.5795], 5); // Center of the United States
+
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '© OpenStreetMap contributors'
+            }).addTo(map);
+
+            attractions.forEach(attraction => {
+                L.marker([attraction.lat, attraction.lng])
+                    .addTo(map)
+                    .bindPopup(`<b>${attraction.name}</b>`);
+            });
+        }
+
+        function goBackToHomepage() {
+            window.location.href = "index.html"; // Replace "/" with your homepage URL
+        }
+    </script>
+    
+    <div id="homeIcon" onclick="goBackToHomepage()">
+        🏠 <!-- You can replace this with your preferred home icon or text -->
+    </div>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=dkasdf&callback=initMap">//YOUR_GOOGLE_MAPS_API_KEY
+    </script>
+</body>
+</html>
